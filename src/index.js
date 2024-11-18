@@ -23,18 +23,36 @@ function createForm() {
 
 function displayWeather(data) {
     const body = document.querySelector('body')
+    body.innerHTML = ''
 
     const container = document.createElement('div')
     container.setAttribute('class', 'weather-container')
     body.appendChild(container)
 
-    const address = document.createElement('h1')
-    address.textContent = data.address
-    container.appendChild(address)
+    const locationCity = document.createElement('h1')
+    const city = data.resolvedAddress.split(', ')[0]
+    locationCity.textContent = city
+    container.appendChild(locationCity)
+
+    const locationCountry = document.createElement('h2')
+    const country = data.resolvedAddress.split(',').slice(1)
+    locationCountry.textContent = country
+    container.appendChild(locationCountry)
+
 
     const currentWeather = document.createElement('h2')
     currentWeather.textContent = data.currentConditions.conditions
     container.appendChild(currentWeather)
+
+    const temperature = document.createElement('h2')
+    temperature.setAttribute('id', 'temperature')
+    temperature.textContent = `Temp: ${data.currentConditions.temp.toFixed(0)}°`
+    container.appendChild(temperature)
+
+    const feelsLike = document.createElement('h2')
+    feelsLike.setAttribute('id', 'felt-temperature')
+    feelsLike.textContent = `Feels like: ${data.currentConditions.feelslike.toFixed(0)}°`
+    container.appendChild(feelsLike)
 
     const weatherDescription = document.createElement('p')
     weatherDescription.textContent = data.description
@@ -70,6 +88,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault()
     const weatherData = await getWeather()
     if (weatherData) {
+        console.log(weatherData)
         displayWeather(weatherData)
     } else {
         console.error('No weather data available for this location')
