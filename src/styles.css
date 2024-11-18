@@ -3,6 +3,42 @@
   font-family: sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  padding: 10vh;
+  gap: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+}
+
+input {
+  min-width: 300px;
+  height: 3rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+button {
+  width: 3rem;
+  height: 3rem;
+}
+
+#search-icon {
+  width: 1rem;
+}
+
 .switch {
   position: relative;
   display: inline-block;

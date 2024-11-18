@@ -1,4 +1,5 @@
 import { toCelsius, clear } from './helper'
+import searchIcon from './icons/search.svg'
 
 export function displayWeather(data) {
     const body = document.querySelector('body')
@@ -64,18 +65,13 @@ export function createForm() {
     const form = document.createElement('form')
     form.setAttribute('id', 'search-location')
 
+    const title = document.createElement('h1')
+    title.textContent = "What's the weather today in..."
+
     body.appendChild(form)
+    form.append(title)
 
-    const search = document.createElement('input')
-    search.type = 'text'
-    search.setAttribute('id', 'location')
-    search.required = true
-
-    form.appendChild(search)
-
-    const searchBtn = document.createElement('button')
-    searchBtn.type = 'submit'
-    searchBtn.textContent = 'Search'
-
-    form.appendChild(searchBtn)
+    form.innerHTML += `<label for="location">
+    <input type="text" placeholder="Enter a city" id="search-city" required>
+    <button type="submit"><img src="${searchIcon}" id="search-icon"></button>`
 }
