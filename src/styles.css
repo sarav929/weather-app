@@ -28,15 +28,33 @@ input {
   height: 3rem;
   padding: 1rem;
   font-size: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.317);
 }
 
-button {
+button[type="submit"] {
   width: 3rem;
   height: 3rem;
+  border: 1px solid black;
+  border: none;
+  background-color: transparent;
+  padding: 0rem 1rem;
 }
 
 #search-icon {
-  width: 1rem;
+  width: 1.8rem;
+  opacity: 80%;
+}
+
+#search-icon:hover {
+  opacity: 100%;
+}
+
+#back-button {
+  width: 1.5rem;
+  margin: 2rem;
+  align-self: flex-start;
+  cursor: pointer;
 }
 
 .switch {

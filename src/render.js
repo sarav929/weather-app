@@ -1,9 +1,21 @@
 import { toCelsius, clear } from './helper'
 import searchIcon from './icons/search.svg'
+import backIcon from './icons/back.svg'
+import { getWeatherByLocation } from './weather'
 
 export function displayWeather(data) {
     const body = document.querySelector('body')
     clear(body)
+
+    const backBtn = document.createElement('img')
+    backBtn.src = backIcon
+    backBtn.setAttribute('id', 'back-button')
+    body.appendChild(backBtn)
+
+    backBtn.addEventListener('click', () => {
+        clear(body)
+        getWeatherByLocation()
+    })
 
     const container = document.createElement('div')
     container.setAttribute('class', 'weather-container')
@@ -71,7 +83,7 @@ export function createForm() {
     body.appendChild(form)
     form.append(title)
 
-    form.innerHTML += `<label for="location">
+    form.innerHTML += `<label for="search-city">
     <input type="text" placeholder="Enter a city" id="search-city" required>
     <button type="submit"><img src="${searchIcon}" id="search-icon"></button>`
 }
