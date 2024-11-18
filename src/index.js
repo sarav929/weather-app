@@ -51,7 +51,7 @@ async function getWeather() {
     const location = getLocation(search)
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${key}`
     try {
-        const response = await fetch(url, {mod: 'CORS'})
+        const response = await fetch(url)
         if(!response.ok) {
             console.error('Error with response:', response.statusText)
         }
@@ -66,18 +66,13 @@ createForm()
 
 const form = document.getElementById('search-location')
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    getWeather()
-    .then(weatherData => {
-        if (weatherData) {
-            displayWeather(weatherData)
-        } else {
-            console.error('No weather data available for this location')
-        }
-    })
-    .catch(error => {
-        console.error('Error occurred while fetching data:', error)
-    })
+    const weatherData = await getWeather()
+    if (weatherData) {
+        displayWeather(weatherData)
+    } else {
+        console.error('No weather data available for this location')
+    }
 })
 
