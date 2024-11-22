@@ -93,6 +93,49 @@ export function displayWeather(data) {
     weatherDescription.setAttribute('id', 'weather-description')
     weatherDescription.textContent = data.description
     container.appendChild(weatherDescription)
+
+    displayForecast(data)
+}
+
+function displayForecast(data) {
+
+    console.log(data)
+
+    const body = document.querySelector('body')
+
+    const title = document.createElement('h1')
+    title.setAttribute('id', 'seven-days-forecast')
+    title.textContent = '7 Days Forecast'
+    body.appendChild(title)
+
+    const wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'row')
+    wrapper.setAttribute('id', 'forecast-wrapper')
+    body.appendChild(wrapper)
+
+    const sevenDaysData = []
+    for (let i = 0; i < 7; i++) {
+        sevenDaysData.push(data.days[i])
+    }
+
+    for (let i = 0; i < sevenDaysData.length; i++) {
+        let forecastDiv = document.createElement('div')
+        forecastDiv.setAttribute('class', 'col')
+        wrapper.appendChild(forecastDiv)
+
+        let dayDiv = document.createElement('div')
+        dayDiv.setAttribute('class', 'day-container')
+        let dateObj = new Date(sevenDaysData[i].datetime)
+        dayDiv.innerHTML = `${dateObj.toLocaleDateString("en-UK", { weekday: "long" })} <br> 
+        ${dateObj.getDate()} - ${dateObj.getMonth()} `
+        forecastDiv.appendChild(dayDiv)
+
+        let weatherDiv = document.createElement('div')
+        weatherDiv.setAttribute('class', 'weather-icon-container')
+        weatherDiv.innerHTML = `<img src="icons/${sevenDaysData[i].icon}.png">`
+        forecastDiv.appendChild(weatherDiv)
+    }
+    
 }
 
 export function createForm() { 
