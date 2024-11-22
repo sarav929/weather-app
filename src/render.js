@@ -103,6 +103,7 @@ export function createForm() {
     body.appendChild(overlay)
 
     const form = document.createElement('form')
+    form.setAttribute('novalidate', true)
     form.setAttribute('id', 'search-location')
 
     const title = document.createElement('h1')
@@ -115,4 +116,8 @@ export function createForm() {
     form.innerHTML += `<label for="search-city">
     <button type="submit"><img src="${searchIcon}" id="search-icon"></button>
     <input type="text" placeholder="Enter a city" id="search-city" autocomplete="off" required>`
+
+    const errorMessage = document.createElement('div')
+    errorMessage.setAttribute('id', 'error-message')
+    body.appendChild(errorMessage)
 }
