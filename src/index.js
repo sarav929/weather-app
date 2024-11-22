@@ -1,3 +1,8 @@
 import './styles.css'
+import { getWeatherByLocation } from './weather'
 
-console.log('test')
+
+getWeatherByLocation()
+
+
+
