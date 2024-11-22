@@ -21,6 +21,13 @@ export function displayWeather(data) {
     container.setAttribute('class', 'weather-container')
     body.appendChild(container)
 
+    const iconDiv = document.createElement('div')
+    iconDiv.setAttribute('class', 'weather-icon')
+    container.appendChild(iconDiv)
+    const iconImg = document.createElement('img')
+    iconImg.src = `icons/${data.currentConditions.icon}.png`
+    iconDiv.appendChild(iconImg)
+
     const switchLabel = document.createElement('label')
     switchLabel.setAttribute('class', 'switch')
     switchLabel.innerHTML = `<input type="checkbox" id="toggle-temp-format">
