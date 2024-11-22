@@ -78,26 +78,30 @@ export function displayWeather(data) {
     
     header.appendChild(switchLabel)
     const switchElement = document.getElementById('toggle-temp-format')
-
-    switchElement.addEventListener('change', () => {
-        if (switchElement.checked) {
-            temperature.textContent = `${tempFahrenheit}°F`
-            feelsLike.textContent = `Feels like ${feelsLikeFahrenheit}°F`
-        } else {
-            temperature.textContent = `${tempCelsius}°C`
-            feelsLike.textContent = `Feels like ${feelsLikeCelsius}°C`
-        }
-    })
+    let tempUnit = 'c'
 
     const weatherDescription = document.createElement('p')
     weatherDescription.setAttribute('id', 'weather-description')
     weatherDescription.textContent = data.description
     container.appendChild(weatherDescription)
 
-    displayForecast(data)
+    displayForecast(data, tempUnit)
+
+    switchElement.addEventListener('change', () => {
+        if (switchElement.checked) {
+            tempUnit = 'f'
+            temperature.textContent = `${tempFahrenheit}°F`
+            feelsLike.textContent = `Feels like ${feelsLikeFahrenheit}°F`
+        } else {
+            tempUnit = 'c'
+            temperature.textContent = `${tempCelsius}°C`
+            feelsLike.textContent = `Feels like ${feelsLikeCelsius}°C`
+        }
+        updateForecast(data, tempUnit)
+    })
 }
 
-function displayForecast(data) {
+function displayForecast(data, unit) {
 
     console.log(data)
 
@@ -130,12 +134,27 @@ function displayForecast(data) {
         ${dateObj.getDate()} - ${dateObj.getMonth() + 1} `
         forecastDiv.appendChild(dayDiv)
 
+        let temperature 
+        if (unit == 'c') {
+            temperature = `${toCelsius(sevenDaysData[i].temp)}°C`
+        } else {
+            temperature = `${sevenDaysData[i].temp.toFixed(0)}°F`
+        }
+
         let weatherDiv = document.createElement('div')
         weatherDiv.setAttribute('class', 'weather-icon-container')
-        weatherDiv.innerHTML = `<img src="icons/${sevenDaysData[i].icon}.png">`
+        weatherDiv.innerHTML = `<img src="icons/${sevenDaysData[i].icon}.png"><br><p class="forecast-temperature">${temperature}</p>`
         forecastDiv.appendChild(weatherDiv)
     }
     
+}
+
+function updateForecast(data, unit) {
+    const wrapper = document.getElementById('forecast-wrapper')
+    const title = document.getElementById('seven-days-forecast')
+    if (title) title.remove()
+    if (wrapper) wrapper.remove()
+    displayForecast(data, unit)
 }
 
 export function createForm() { 
