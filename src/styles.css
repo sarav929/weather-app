@@ -21,10 +21,21 @@ body {
   background-size: cover;
 }
 
-h1 {
+.overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.homepage-h1 {
   margin: 10% 2rem 0rem 2rem;
-  color: white;
   text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: #fff;
 }
 
 form {
@@ -76,11 +87,94 @@ button[type="submit"] {
   scale: 1.1;
 }
 
+/*******************/
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 400px;
+  gap: 1rem;
+}
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+}
+
+.weather-icon {
+  display: flex;
+  align-items: center;
+
+  & img {
+    min-width: 100px;
+    max-width: 300px;
+    -webkit-filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+  }
+}
+
+#city {
+  font-weight: 400;
+  font-size: 2.5rem;
+  margin: 0px;
+  color: #fff;
+}
+
+#country {
+  font-weight: 350;
+  font-size: 1.5rem;
+  margin: 0px;
+  color: #fff;
+}
+
+#current-weather {
+  font-weight: 400;
+  color: #fff;
+}
+
+#temperature {
+  font-size: 3rem;
+  margin: 0px;
+  font-weight: 400;
+  color: #fff;
+}
+
+#felt-temperature {
+  font-size: 1.2rem;
+  margin: 10px;
+  font-weight: 350;
+  color: #fff;
+}
+
+#weather-description {
+  font-size: 1rem;
+  font-weight: 350;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  padding: 2rem 5%;
+}
+
 #back-button {
-  width: 1.5rem;
-  margin: 2rem;
-  align-self: flex-start;
-  cursor: pointer;
+  filter: invert(100%);
+  width: 2.2rem;
+  opacity: 80%;
+  transition: ease-in-out 300ms;
+  scale: 1;
+}
+
+#back-button:hover {
+  opacity: 90%;
+  scale: 1.1;
 }
 
 .switch {
@@ -88,6 +182,12 @@ button[type="submit"] {
   display: inline-block;
   width: 60px;
   height: 34px;
+  transition: ease-in-out 300ms;
+  scale: 1;
+}
+
+.switch:hover {
+  scale: 1.1;
 }
 
 /* Hide default HTML checkbox */
@@ -105,7 +205,7 @@ button[type="submit"] {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #cccccc6a;
   -webkit-transition: .4s;
   transition: .4s;
   
@@ -119,6 +219,7 @@ button[type="submit"] {
   left: 4px;
   bottom: 4px;
   background-color: white;
+  opacity: 90%;
   -webkit-transition: .4s;
   transition: .4s;
   display: flex;
