@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat-VariableFont_wght.ttf');
+}
+
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  color: #212529;
+  font-weight: 300;
 }
 
 body {
@@ -8,15 +15,27 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url('./img/backgr3.jpg');
+  background-position: 0;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1 {
+  margin: 10% 2rem 0rem 2rem;
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 form {
-  padding: 10vh;
-  gap: 3rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.9);
+  gap: 2rem;
+  min-width: 400px;
+  border-radius: 30px;
+  position: relative;
+  margin: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 label {
@@ -24,12 +43,16 @@ label {
 }
 
 input {
-  min-width: 300px;
-  height: 3rem;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
   padding: 1rem;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.317);
+  min-width: 300px;
+}
+
+input:focus, input:active {
+  outline: none;
+  background-color: transparent;
 }
 
 button[type="submit"] {
@@ -38,16 +61,19 @@ button[type="submit"] {
   border: 1px solid black;
   border: none;
   background-color: transparent;
-  padding: 0rem 1rem;
+  margin: .5rem;
 }
 
 #search-icon {
-  width: 1.8rem;
-  opacity: 80%;
+  width: 1.5rem;
+  opacity: 30%;
+  transition: ease-in-out 300ms;
+  scale: 1;
 }
 
 #search-icon:hover {
-  opacity: 100%;
+  opacity: 50%;
+  scale: 1.1;
 }
 
 #back-button {
