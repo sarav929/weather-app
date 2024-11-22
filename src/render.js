@@ -126,8 +126,8 @@ function displayForecast(data) {
         let dayDiv = document.createElement('div')
         dayDiv.setAttribute('class', 'day-container')
         let dateObj = new Date(sevenDaysData[i].datetime)
-        dayDiv.innerHTML = `${dateObj.toLocaleDateString("en-UK", { weekday: "long" })} <br> 
-        ${dateObj.getDate()} - ${dateObj.getMonth()} `
+        dayDiv.innerHTML = `${dateObj.toLocaleDateString("en-UK", { weekday: "long" }).substring(0, 3).toUpperCase()} <br> 
+        ${dateObj.getDate()} - ${dateObj.getMonth() + 1} `
         forecastDiv.appendChild(dayDiv)
 
         let weatherDiv = document.createElement('div')
