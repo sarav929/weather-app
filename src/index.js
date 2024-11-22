@@ -1,6 +1,7 @@
-import './styles.css'
-import { getWeatherByLocation } from './weather'
+import './styles/homepage.css'
+import './styles/weatherpage.css'
 
+import { getWeatherByLocation } from './weather'
 
 getWeatherByLocation()
 
