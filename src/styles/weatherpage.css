@@ -1,0 +1,224 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 400px;
+    gap: 1rem;
+  }
+  
+  .weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+  }
+  
+  .weather-icon {
+    display: flex;
+    align-items: center;
+  
+    & img {
+      min-width: 100px;
+      max-width: 300px;
+      -webkit-filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+      filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+    }
+  }
+  
+  #city {
+    font-weight: 400;
+    font-size: 2.5rem;
+    margin: 0px;
+    color: #fff;
+  }
+  
+  #country {
+    font-weight: 350;
+    font-size: 1.5rem;
+    margin: 0px;
+    color: #fff;
+  }
+  
+  #current-weather {
+    font-weight: 400;
+    color: #fff;
+  }
+  
+  #temperature {
+    font-size: 3rem;
+    margin: 0px;
+    font-weight: 400;
+    color: #fff;
+  }
+  
+  #felt-temperature {
+    font-size: 1.2rem;
+    margin: 10px;
+    font-weight: 350;
+    color: #fff;
+  }
+  
+  #weather-description {
+    font-size: 1rem;
+    font-weight: 350;
+    color: #fff;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 2rem 5%;
+  }
+  
+  #back-button {
+    filter: invert(100%);
+    width: 2.2rem;
+    opacity: 80%;
+    transition: ease-in-out 300ms;
+    scale: 1;
+  }
+  
+  #back-button:hover {
+    opacity: 90%;
+    scale: 1.1;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    transition: ease-in-out 300ms;
+    scale: 1;
+  }
+  
+  .switch:hover {
+    scale: 1.1;
+  }
+  
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc6a;
+    -webkit-transition: .4s;
+    transition: .4s;
+    
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    opacity: 90%;
+    -webkit-transition: .4s;
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '°C';
+    font-weight: bold;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '°F';
+    font-weight: bold;
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  #seven-days-forecast {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 3rem 0rem 2rem 0rem;
+    text-transform: uppercase;
+  }
+
+  .row {
+    background-color: #ffffffa2;
+    border-radius: 30px;
+    display: flex;
+    margin-bottom: 10%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    & img {
+        width: 3.5rem;
+        -webkit-filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+        filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 3px 8px);
+    }
+  }
+
+  .col {
+    display: flex;
+    width: 130px;
+    flex-direction: column;
+    gap: 1rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.248);
+    padding: 2rem;
+  }
+
+  .col > div:last-child {
+    border: none;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: .8rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.248);
+        width: 350px;
+    }
+
+    .row > div:last-child {
+        border: none;
+    }
+
+    .weather-icon-container {
+        width: 150px;
+    }
+
+    .day-container {
+        width: 150px;
+    }
+  }
