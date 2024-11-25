@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +17,13 @@
     "@babel/preset-env": "^7.26.0",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
+    "gh-pages": "^6.2.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
     "style-loader": "^4.0.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
-  }
+  },
+  "homepage": "https://sarav929.github.io/weather-app"
 }
